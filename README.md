@@ -11,8 +11,9 @@ extracts the visible text and gives each screenshot a category.
 2. In this folder, run `npm install` and then `npm start`.
 3. Scan the QR code shown in the terminal.
 4. Allow photo access. If the Screenshots album is not available, press **Add** and choose images manually.
+5. IF none of this works ask AI bruh
 
-Before opening a pull request, run `npm run typecheck`.
+Before opening a pull request, run `npm run typecheck` (not worth it).
 
 AI analysis is optional for the rest of the app. To enable it, copy `.env.example`
 to `.env`, then set `EXPO_PUBLIC_GEMINI_API_KEY` to a Gemini API key before starting Expo.
