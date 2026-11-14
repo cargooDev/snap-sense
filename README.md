@@ -1,4 +1,4 @@
-# SnapSense
+# SnapSense (made with the help of AI)
 
 SnapSense is a small React Native / Expo app for organising screenshots. It imports
 screenshots from an Android device, stores their metadata locally, and lets a user
