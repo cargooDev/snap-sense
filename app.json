@@ -1,0 +1,27 @@
+{
+  "expo": {
+    "name": "SnapSense AI",
+    "slug": "snapsense-ai",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "android": {
+      "permissions": [
+        "READ_MEDIA_IMAGES",
+        "POST_NOTIFICATIONS"
+      ]
+    },
+    "plugins": [
+      [
+        "expo-media-library",
+        {
+          "photosPermission": "SnapSense reads your screenshots to organise them."
+        }
+      ],
+      "expo-sqlite",
+      "expo-notifications",
+      "expo-image",
+      "expo-status-bar"
+    ]
+  }
+}
