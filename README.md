@@ -29,31 +29,3 @@ src/db/database.ts      SQLite database queries
 src/services/           phone gallery, notification, and AI integration
 src/types.ts            shared TypeScript types
 ```
-
-The app deliberately uses two screens and a single `selectedId` state value instead
-of a navigation library. This keeps the project focused and makes the data flow easy
-to explain.
-
-## How the data flows
-
-1. `useGallery` requests photo permission and reads the phone's Screenshots album.
-2. `database.ts` stores each image URI and its creation date in SQLite. `INSERT OR IGNORE` means a repeated sync does not erase an existing analysis.
-3. The gallery asks SQLite for rows that match the current search text and filters.
-4. When a screenshot opens, `useDetail` loads it. If it has never been analysed, it sends a resized image to Gemini once and saves the result locally.
-5. Favourite and reminder actions update the same SQLite row. The notification ID is also saved so a reminder can be cancelled later.
-
-## Useful review answers
-
-**Why use SQLite?** Screenshot records need to remain after the app closes. SQLite is local, fast, and works without a server.
-
-**Why keep AI in a service?** The screen should only display UI. Keeping the network request in `services/gemini.ts` means it can be replaced later without rewriting the screen.
-
-**What happens if a user denies photo permission?** The gallery shows an Add option, which uses the image picker instead of reading the whole gallery.
-
-**Why is the Gemini key not production-ready?** Variables beginning with `EXPO_PUBLIC_` are included in an Expo app bundle. A production app would call a backend that keeps the key secret.
-
-## Known limitations
-
-- AI analysis needs internet and a valid API key; saved results remain available locally afterwards.
-- Reading a full screenshots album can behave differently across Android devices, so the manual picker is included as a fallback.
-- The project uses local notifications only; it does not send cloud notifications.
